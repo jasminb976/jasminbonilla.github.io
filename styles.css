@@ -14,6 +14,7 @@
   --gold: #D8A63D;
 }
 
+html{ height:100%; }
 *{box-sizing:border-box;}
 body{
   margin:0;
@@ -27,13 +28,20 @@ body{
   background-position: 0 0, 15px 15px, 0 0;
   background-repeat: repeat, repeat, no-repeat;
   color:var(--brown);
-  min-height:100vh;
-  padding: 22px 14px 60px;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 22px 14px;
 }
 
 .frame{
+  display:flex;
+  flex-direction:column;
+  width:100%;
   max-width: 920px;
-  margin: 0 auto;
+  height: min(860px, 92vh);
   border-radius: 26px;
   overflow: hidden;
   background: var(--cream);
@@ -42,6 +50,17 @@ body{
     0 18px 0 rgba(67,90,44,0.35),
     0 22px 40px rgba(30,40,15,0.35);
 }
+
+.tabbar, .urlbar-row, footer{ flex-shrink:0; }
+
+.frame-body{
+  flex:1;
+  overflow-y:auto;
+  min-height:0;
+}
+.frame-body::-webkit-scrollbar{ width:10px; }
+.frame-body::-webkit-scrollbar-track{ background:var(--cream); }
+.frame-body::-webkit-scrollbar-thumb{ background:var(--sage-dark); border-radius:10px; }
 
 /* ---------- TOP TAB NAV (real browser tabs) ---------- */
 .tabbar{
